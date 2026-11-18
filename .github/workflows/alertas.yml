@@ -1,0 +1,28 @@
+name: Alertas cripto
+
+on:
+  schedule:
+    # 5 minutos después del cierre de cada vela de 4h (hora UTC)
+    # = 19:05, 23:05, 03:05, 07:05, 11:05 y 15:05 en Toronto (invierno)
+    - cron: "5 0,4,8,12,16,20 * * *"
+  workflow_dispatch: {}   # botón "Run workflow" para probar a mano
+
+jobs:
+  revisar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Instalar librerías
+        run: pip install -r requirements.txt
+      - name: Revisar la lista y enviar alertas
+        run: python monitor.py --una-vez
+        env:
+          GMAIL_USER: ${{ secrets.GMAIL_USER }}
+          GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
+          EMAIL_TO: ${{ secrets.EMAIL_TO }}
+          EXCHANGE: kraken

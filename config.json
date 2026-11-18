@@ -1,0 +1,41 @@
+{
+  "exchange": "binance",
+  "timeframe": "4h",
+  "velas": 1500,
+  "horizonte_ml": 6,
+  "zona_horaria": "America/Toronto",
+  "watchlist": [
+    "BTC/USDT",
+    "ETH/USDT",
+    "SOL/USDT",
+    "XRP/USDT",
+    "BNB/USDT",
+    "DOGE/USDT"
+  ],
+  "params": {
+    "ema_rapida": 50,
+    "ema_lenta": 200,
+    "usar_htf": true,
+    "ema_htf": 50,
+    "rsi_len": 14,
+    "rsi_compra_max": 70.0,
+    "rsi_venta_min": 30.0,
+    "macd_rapida": 12,
+    "macd_lenta": 26,
+    "macd_senal": 9,
+    "usar_vol": true,
+    "vol_len": 20,
+    "atr_len": 14,
+    "sl_mult": 1.5,
+    "tp_mult": 3.0,
+    "bb_len": 20,
+    "bb_mult": 2.0,
+    "min_puntos": 4,
+    "usar_preaviso": true
+  },
+  "alertas": {
+    "senales": true,
+    "preavisos": true,
+    "incluir_noticias": true
+  }
+}
